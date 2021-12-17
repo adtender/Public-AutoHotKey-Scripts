@@ -53,23 +53,6 @@ else if Pedersen = y%A_Space% ; Search Youtube
     gui_search_title = Search Youtube
     gui_search("https://www.youtube.com/results?search_query=REPLACEME")
 }
-else if Pedersen = kill2002
-{
-    gui_destroy()
-    DetectHiddenWindows, On
-    WinClose, C:\Users\WMPCw\Documents\GitHub\FFXIV-Queue-Dodger\QueueDodger.ahk ahk_class AutoHotkey
-    DetectHiddenWindows, Off
-
-}
-else if Pedersen = killinst
-{
-    gui_destroy()
-    DetectHiddenWindows, On
-    WinClose, C:\Users\WMPCw\Documents\GitHub\FFXIV-Instance-Switcher\instanceSwitcher.ahk ahk_class AutoHotkey
-    DetectHiddenWindows, Off
-; (you may want to disable DetectHiddenWindows afterwards)
-
-}
 ;-------------------------------------------------------------------------------
 ;;; LAUNCH WEBSITES AND PROGRAMS ;;;
 ;-------------------------------------------------------------------------------
@@ -128,12 +111,12 @@ else if Pedersen = ? ; Tooltip with list of commands
     GuiControl,, Pedersen, ; Clear the input box
     Gosub, gui_commandlibrary
 }
-else if Pedersen = inst
+else if Pedersen = inst ; Open instance changer script
 {
     gui_destroy()
     run "C:\Users\WMPCw\Documents\GitHub\FFXIV-Instance-Switcher\instanceSwitcher.ahk"
 }
-else if Pedersen = 2002
+else if Pedersen = 2002 ; Open queue dodger script
 {
     gui_destroy()
     run "C:\Users\WMPCw\Documents\GitHub\FFXIV-Queue-Dodger\QueueDodger.ahk"
@@ -141,3 +124,27 @@ else if Pedersen = 2002
 ;-------------------------------------------------------------------------------
 ;;; KILL PROGRAMS ;;;
 ;-------------------------------------------------------------------------------
+else if Pedersen = kill2002 ; Kill the queue dodger script
+{
+    gui_destroy()
+    DetectHiddenWindows, On
+    WinClose, C:\Users\WMPCw\Documents\GitHub\FFXIV-Queue-Dodger\QueueDodger.ahk ahk_class AutoHotkey
+    DetectHiddenWindows, Off
+
+}
+else if Pedersen = killinst ; Kill the instnace script
+{
+    gui_destroy()
+    DetectHiddenWindows, On
+    WinClose, C:\Users\WMPCw\Documents\GitHub\FFXIV-Instance-Switcher\instanceSwitcher.ahk ahk_class AutoHotkey
+    DetectHiddenWindows, Off
+; (you may want to disable DetectHiddenWindows afterwards)
+}
+else if Pedersen = killall ; Kill all scripts
+{
+    gui_destroy()
+    DetectHiddenWindows, On
+    WinClose, C:\Users\WMPCw\Documents\GitHub\FFXIV-Instance-Switcher\instanceSwitcher.ahk ahk_class AutoHotkey
+    WinClose, C:\Users\WMPCw\Documents\GitHub\FFXIV-Queue-Dodger\QueueDodger.ahk ahk_class AutoHotkey
+    DetectHiddenWindows, Off
+}
