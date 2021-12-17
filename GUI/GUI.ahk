@@ -134,9 +134,27 @@ gui_search(url) {
 
     ; Assign the url to a variable.
     ; The variables will have names search_url1, search_url2, ...
-
+    
     search_urls := search_urls + 1
     search_url%search_urls% := url
+}
+
+kill_script(Name) {
+    global
+    if gui_state != search
+    {
+        gui_state = search
+        ; if gui_state is "main", then we are coming from the main window and
+        ; GUI elements for the search field have not yet been added.
+        Gosub, gui_search_add_elements
+    }
+    DetectHiddenWindows On
+    SetTitleMatchMode RegEx
+    IfWinExist, i)%Name%.* ahk_class AutoHotkey
+    {
+        WinClose
+        WinWaitClose, i)%Name%.* ahk_class AutoHotkey, , 2
+    }
 }
 
 gui_SearchEnter:
